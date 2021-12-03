@@ -10,9 +10,10 @@ def calculate_rates(input):
     epsilonList = []
     
     digitCount = len(input[0])
-    count = 0
     
-    for index in range(digitCount):
+    for index in range(digitCount): 
+        count = 0
+
         for binaryNo in input:
             if binaryNo[index] == '1':
                 count += 1
@@ -25,8 +26,6 @@ def calculate_rates(input):
         elif count < 0:
             gammaList.append(0)
             epsilonList.append(1)
-        
-        count = 0
     
     return convert_binary(gammaList), convert_binary(epsilonList)
     
