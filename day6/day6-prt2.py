@@ -11,17 +11,13 @@ def read_in_file(filename):
 
 def calculate_lanternfish_no(lanternfishdict, days):
     if days > 0:
-        print(days)
         newfishdict = {k: 0 for k in range(9)}
         for key in lanternfishdict:
             if key == 0:
-                newfishdict[6] = lanternfishdict[key]
-                newfishdict[8] = lanternfishdict[key]
-            elif key == 7:
-                print(newfishdict)
-                newfishdict[key - 1] += lanternfishdict[key]
+                newfishdict[6] += lanternfishdict[key]
+                newfishdict[8] += lanternfishdict[key]
             else:
-                newfishdict[key - 1] = lanternfishdict[key]
+                newfishdict[key - 1] += lanternfishdict[key]
         return calculate_lanternfish_no(newfishdict, days - 1)
         
     return(sum(lanternfishdict.values()))

@@ -18,8 +18,7 @@ def read_in_file(filename):
         
         for row in lines:
             if row != []:
-                row = [int(num) for num in row]
-                board.append(row)
+                board.append([int(num) for num in row])
             else:
                 boards.append(board)
                 board = []
@@ -39,32 +38,35 @@ def play_bingo(numbers, boards):
 
 def call_number(number, boards):
     newBoards = []
-    newBoard = []
     
     for board in boards:
+        newBoard = []
         for row in board:
             row = ["X" if i==number else i for i in row]
             newBoard.append(row)
         newBoards.append(newBoard)
-        newBoard = []
+        
     return newBoards
 
 
 def check_boards(boards):
     winningBoards = []
     for board in boards:
+        winningBoard = False
         
         for row in board:
             if all(i == "X" for i in row):
                 winningBoards.append(board)
+                winningBoard = True
                 break
-            
-        transposedBoard = list(zip(*board))
-    
-        for row in transposedBoard:
-            if all(i == "X" for i in row):
-                winningBoards.append(board)
-                break
+        
+        if not winningBoard:
+            transposedBoard = list(zip(*board))
+        
+            for row in transposedBoard:
+                if all(i == "X" for i in row):
+                    winningBoards.append(board)
+                    break
     
     winningLength = len(winningBoards)
     

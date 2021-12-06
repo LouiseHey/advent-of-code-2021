@@ -10,7 +10,6 @@ def read_in_file(filename):
 
 
 def calculate_lanternfish_no(lanternfish, days):
-    print(days)
     if days > 0:
         newLanternfish = []
         for state in lanternfish:
@@ -27,5 +26,5 @@ def calculate_lanternfish_no(lanternfish, days):
 
 if __name__ == "__main__":
     input = read_in_file("day6.txt")
-    number = calculate_lanternfish_no(input, 256)
+    number = calculate_lanternfish_no(input, 80)
     print(number)
